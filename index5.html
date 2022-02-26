@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="uft-8">
+    <title>WebMap New</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+    <link rel="stylesheet" type="text/css" href="http://unpkg.com/view-design/dist/styles/iview.css">
+    <script type="text/javascript" src="http://unpkg.com/vue@2.6.14/dist/vue.min.js"></script>
+    <script type="text/javascript" src="http://unpkg.com/view-design/dist/iview.min.js"></script>
+
+    <style type="text/css">
+        html {
+            height: 100%
+        }
+
+        body {
+            height: 100%;
+            margin: 0px;
+            padding: 0px
+        }
+
+        p {
+            margin: 1em 0 1em 0;
+            line-height: 1.5em
+        }
+
+        #container {
+            overflow: hidden;
+            height: 100%;
+            width: 100%;
+            font-family: "微软雅黑";
+        }
+
+        #animate {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background-color: red;
+        }
+    </style>
+    <!-- 可的ak -->
+    <script src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=4sgTiM37ksH6mbDy4rmGyg4hoAzlEfaS"></script>
+    <!-- 远的ak -->
+    <!-- <script src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=dumpwriPStVA2CpDni6pGeX1PDGuLbqv"></script> -->
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- <i-button @click="show()">Click me!</i-button> -->
+        <!-- <Modal v-model="visible" title="Welcome">Welcome to ViewUI</Modal> -->
+        <!-- <i-button type="primary" @click="modal0 = true">Display dialog box</i-button> -->
+        <Modal v-model="modal0" title="平仓巷3号">
+            <img style='float:right;margin:10px 20px 10px 10px' id='imgDemo' src='images/pingcangxiang.jpg' width='200' />
+            <p>现赛珍珠纪念馆。南京大屠杀期间，这里是国际安全区委员会、国际红十字会的会议室，委员会很多重要文件在这里拟定及签发。
+                8位从事安全区工作的美籍人士曾在此居住，同时也收容了部分难民。
+                史迈士在1938年致朋友的信函中写道：“一些美国朋友的房屋都遭到日本士兵的洗劫……但我们的房屋挤满了难民，他们掩盖了我们的大部分物品！”1938年安全区工作告一段落后，国际安全区委员会主席约翰·拉贝回国前的招待会也在此举办。</p>
+
+        </Modal>
+        <Modal v-model="modal1" title="宁海路5号">
+            <img style='float:right;margin:10px 20px 10px 10px' id='imgDemo' src='images/ninghailu.jpeg' width='200' />
+            <p>南京安全区国际委员会总部，原属德国驻华大使馆，后由大使馆转交给国际安全区委员会作为行动总部。
+                1937年11月22日，考虑到南京或南京附近可能爆发暴力冲突，留在南京的外国人决定仿照法国神父饶家驹在上海设立安全区的行为，
+                建立“南京安全区”，并将安全区国际委员会总部设于宁海路5号。《拉贝日记》中收录的南京安全区国际委员会的报告、信件等，
+                均注有“宁海路5号”的字样。</p> <!--此处要求配信件图-->
+        </Modal>
+        <Modal v-model="modal2" title="拉贝故居">
+            <img style='float:right;margin:10px 20px 10px 10px' id='imgDemo' src='images/xinjiekou.jpg' width='200' />
+            <p>位于广州路小粉桥1号，是一处临街、面积不大的独栋小院。
+                1932至1938年间，这里曾是德国西门子公司驻南京代表处代表约翰·拉贝先生的住宅。
+                1937年南京沦陷后，这里是南京国际安全区内20多个难民收容所之一，被称为“西门子难民收容所”，最多时曾收留了600多难民。
+                拉贝的中国助手韩湘琳担任收容所所长。</p><!--要求配当年难民指纹图-->
+        </Modal>
+        <Modal v-model="modal3" title="鼓楼医院">
+            <img style='float:right;margin:10px 20px 10px 10px' id='imgDemo' src='images/gulouyiyuan.jpg' width='200' />
+            <p>1937年下半年，金陵大学鼓楼医院因其地理位置和教会医院背景，被划入国际安全区范围。
+                仅有20多位医务人员留守的鼓楼医院成为南京大屠杀期间唯一对平民开放的医院，也是当时南京唯一的医疗救助机构。
+                《拉贝日记》中常有教会医院（鼓楼医院）收治被日军迫害的平民的记载。为了让更多的伤员得到医疗救助，
+                鼓楼医院坚持不收费或少收费，依靠南京安全区国际委员会筹集的善款维持运转。</p>
+        </Modal>
+        <Modal v-model="modal4" title="金陵大学">
+            <img style='float:right;margin:10px 20px 10px 10px' id='imgDemo' src='images/jinlingdaxue.jpg' width='200' />
+            <p>金陵大学（南京大学前身）与拉贝有着不解之缘。
+                拉贝故居依金陵大学农学院院长谢金声和约翰·拉贝签订的协议而建，建成后租给拉贝。
+                作为国际安全区的一部分，金陵大学蚕厂（桑蚕系）、金陵大学图书馆以及金陵大学宿舍等也承担起收容难民的工作。</p>
+            <p>金陵大学蚕厂：原所长王兴龙因被怀疑是中国军人而被日本人逮捕，
+                后由金哲桥（音译）担任代理所长的职务。1938年1月4日米尔斯、福斯特等人前往检查时，所内有难民3304人。
+                检查人员发现：
+                “收容所十分拥挤，卫生设施很差。看来缺少一个适当的组织……有许多抱怨
+                1.最穷的和最需要的人得不到米；
+                2.干活的人得不到米……”    
+            </p>
+            <p>金陵大学图书馆：所长梁开纯（音），位于安全区内金陵大学校园，由安全区国际委员会管理。
+                1938年1月5日米尔斯、福斯特等人前往检查时发现：
+                “该收容所有难民约3000人，许多难民生活在遍布整个辖区的草席棚和帐篷里。他们属于手工业阶层，勤劳，试图以某种方式维持生计。”                
+            </p>
+            <p>金陵大学宿舍：所长齐兆昌，位于安全区内鼓楼西南，由安全区国际委员会管理。
+                在1937年12月17日的记载中，金陵大学宿舍收容的难民数量为约1000名妇女儿童。
+                1938年1月5日米尔斯、福斯特等人前往检查时，收容所的难民数量已达7000人，其中大多为妇女和儿童。
+                收容所每天配有25-30袋大米及3吨燃煤，以维持粥厂的供应。粥厂每天两次出售稀饭，每杯3个铜板。
+            </p>
+        </Modal>
+        <Modal v-model="modal5" title="金陵女子文理学院">
+            <img style='float:right;margin:10px 20px 10px 10px' id='imgDemo' src='images/jinlingnvzi.jpg' width='200' />
+            <p>今天南京师范大学随园校区，所长魏特琳女士。金陵女子文理学院难民收容所接纳的难民曾一度多达1万人，在1938年1月5日米尔斯、福斯特等人前往检查时，所内有难民5000~6000人。该收容所内的难民多为妇女和儿童，另有极少数的老年男性。收容所平均每天配有12袋米，以保证公共厨房的供应，该厨房由中国红十字会领导。检查人员对魏特琳女士的工作做出了高度评价。
+            </p>
+        </Modal>
+        <Modal v-model="modal6" title="金陵神学院">
+            <img style='float:right;margin:10px 20px 10px 10px' id='imgDemo' src='images/jinlingshengxueyuan.jpg' width='200' />
+            <p>金陵神学院难民收容所，所长陶忠亮。根据国际委员会在1938年1月4日的检查报告，该难民收容所当时有难民3116人，其中约四分之三为贫困难民。每天该所配有2袋大米，只有老年妇女和寡妇可以免费得到大米。</p>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+        </Modal>
+        <Modal v-model="modal7" title="华侨招待所">
+            <img style='float:right;margin:10px 20px 10px 10px' id='imgDemo' src='images/huaqiaozhaodaisuo.jpeg' width='200' />
+            <p>华侨俱乐部难民收容所位于安全区内中山北路西侧，由安全区国际委员会管理，所长毛青亭。1938年1月3日，米尔斯和福斯特等人前往检查时，所内有难民1100人。该收容所每天没有固定的大米分配量，有时一天提供三四袋，有时提供五袋，每个家庭自己做饭。
+            </p>
+        </Modal>
+        <Modal v-model="modal8" title="国民政府交通部">
+            <img style='float:right;margin:10px 20px 10px 10px' id='imgDemo' src='images/guominzhengfu.jpg' width='200' />
+            <p>兵库署（军械库）难民收容所，又称交通部旧厦难民收容所，位于安全区内华侨路慈悲社，由安全区国际委员会管理，所长陆成美。
+                1937年12月31日米尔斯、福斯特等人前往检查时发现：该收容所约有难民8000人，其中3000人无偿领取米粥，2400人膳食自理，大部分难民自己做饭。
+                1938年1月22日，该收容所共有难民12000人。安全区国际委员会称，该处难民是“城市最贫困的人口”，该所的“管理难度最大”。
+            </p>
+        </Modal>
+    </div>
+    <div id="container"></div>
+</body>
+
+</html>
+
+<script type="text/javascript">
+    var map = new BMapGL.Map("container");
+    // 创建地图实例 
+    var point = new BMapGL.Point(118.78, 32.06);
+    // 创建点坐标 
+    map.centerAndZoom(point, 14); // 初始化地图，设置中心点坐标和地图级别 
+    map.setMapStyleV2({ styleId: 'e7c8f51a84922c56ac0884f7b85b2356' });
+    map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+    var scaleCtrl = new BMapGL.ScaleControl();  // 添加比例尺控件
+    map.addControl(scaleCtrl);
+    /*var zoomCtrl = new BMapGL.ZoomControl();  // 添加缩放控件
+    map.addControl(zoomCtrl);*/
+    map.setTilt(45);
+    map.setDisplayOptions({
+        poiText: false,  // 隐藏poi标注
+        poiIcon: false,  // 隐藏poi图标
+        building: false  // 隐藏楼块
+    });
+
+
+</script>
+
+<script>
+    // var myIcon = new BMapGL.Icon(require("./images/lantern2.png"), new BMapGL.Size(2048, 2048));
+    var myIcon = new BMapGL.Icon("images/lantern2.png", new BMapGL.Size(32, 32));
+
+    // 创建Marker标注，使用孔明灯图标
+
+    var point = new Array();
+    var marker = new Array();
+    point[0] = new BMapGL.Point(118.784773, 32.061284);
+    point[1] = new BMapGL.Point(118.775927, 32.070405);
+    point[2] = new BMapGL.Point(118.789863, 32.056754);
+    point[3] = new BMapGL.Point(118.789756, 32.063179);
+    point[4] = new BMapGL.Point(118.787487, 32.063273);
+    point[5] = new BMapGL.Point(118.775830, 32.059739);
+    point[6] = new BMapGL.Point(118.784569, 32.049938);
+    point[7] = new BMapGL.Point(118.782470, 32.071342);
+    point[8] = new BMapGL.Point(118.764077, 32.086597);
+
+    console.log(typeof(point[8]));
+
+
+    for (var i = 0; i < 9; i++) {
+        marker[i] = new BMapGL.Marker(point[i], { icon: myIcon });        // 创建标注   
+        //marker.setIcon(myIcon);
+        map.addOverlay(marker[i]); // 将标注添加到地图中
+    }
+
+    // 监听事件
+    // marker[0].addEventListener('click', function (e) {
+    //     // alert('click!');
+    //     modal0 = true;
+    // });
+
+    // 创建图文信息窗口
+    // var sContent = "<h3 style='text-align: center; margin:0 0 1em 0'>新街口</h3>\
+    // <img style='float:right;margin:10px 20px 10px 10px' id='imgDemo' src='images/xinJieKou.jpg' width='200'/>\
+    // <p>新街口位于南京的中心区域，以新街口广场（孙中山铜像）为标志，是中国著名的商业中心，拥有百年历史，被誉为“中华第一商圈”。</p>\
+    // <p>1929年（民国十八年），国民政府依照《首都计划》开始建设首都南京，新街口首次规划为商业区。中山大道由此折东，中山东路、中正路\
+    //     （今中山南路）、汉中路和中山路四条宽40多米的林荫大道在此交汇，中间形成环形的新街口广场，并以一尊孙中山铜像为分隔。</p>";
+    // var opts = {
+    //     width: 0,
+    //     title: '新街口'
+    // };
+
+    // var infoWindow = new BMapGL.InfoWindow(sContent, opts);
+    // marker添加点击事件
+
+    marker[0].addEventListener('click', function () {
+        var pos = 0;
+        var pEnd = 80;
+        var id = setInterval(frame, 50);
+        function frame() {
+            if (point[0].lng==118.784773+Math.sin(0.2*pEnd)*0.001 & point[0].lat==32.061284+pEnd*0.0005){return;
+            } else {
+            if (pos == pEnd) {
+                //point[0].point[0].lng=point[0].lng+Math.sin(pos);
+                //point[0].lat=point[0].lat-pos;
+                clearInterval(id);
+            } else {
+                pos++;
+                point[0].lng=118.784773+Math.sin(0.2*pos)*0.001;
+                point[0].lat=32.061284+pos*0.0005;
+                marker[0].setPosition(point[0])
+            }}
+        }
+        vueapp.modal0 = true;
+        // this.openInfoWindow(infoWindow);
+        // 图片加载完毕重绘infoWindow
+        document.getElementById('imgDemo').onload = function () {
+            infoWindow.redraw(); // 防止在网速较慢时生成的信息框高度比图片总高度小，导致图片部分被隐藏
+        };
+    });
+    marker[1].addEventListener('click', function () {
+        var pos = 0;
+        var pEnd = 80;
+        var id = setInterval(frame1, 50);
+        function frame1() {
+            if (point[1].lng==118.775927+Math.sin(0.2*pEnd)*0.001 & point[1].lat==32.070405+pEnd*0.0005){return;
+            } else {
+            if (pos == pEnd) {
+                //point[0].point[0].lng=point[0].lng+Math.sin(pos);
+                //point[0].lat=point[0].lat-pos;
+                clearInterval(id);
+            } else {
+                pos++;
+                point[1].lng=118.775927+Math.sin(0.2*pos)*0.001;
+                point[1].lat=32.070405+pos*0.0005;
+                marker[1].setPosition(point[1])
+            }}
+        }
+        vueapp.modal1 = true;
+        // this.openInfoWindow(infoWindow);
+        // 图片加载完毕重绘infoWindow
+        document.getElementById('imgDemo').onload = function () {
+            infoWindow.redraw(); // 防止在网速较慢时生成的信息框高度比图片总高度小，导致图片部分被隐藏
+        };
+    });
+    marker[2].addEventListener('click', function () {
+        var elem = document.getElementById("animate");
+        var pos = 0;
+        var pEnd = 80;
+        var id = setInterval(frame, 50);
+        function frame() {
+            if (point[2].lng==118.789863+Math.sin(0.3*pEnd)*0.001 & point[2].lat==32.056754+pEnd*0.0005){return;
+            } else {
+            if (pos == pEnd) {
+                //point[0].point[0].lng=point[0].lng+Math.sin(pos);
+                //point[0].lat=point[0].lat-pos;
+                clearInterval(id);
+            } else {
+                pos++;
+                point[2].lng=118.789863+Math.sin(0.3*pos)*0.001;
+                point[2].lat=32.056754+pos*0.0005;
+                marker[2].setPosition(point[2])
+            }}
+        }
+        vueapp.modal2 = true;
+        // this.openInfoWindow(infoWindow);
+        // 图片加载完毕重绘infoWindow
+        document.getElementById('imgDemo').onload = function () {
+            infoWindow.redraw(); // 防止在网速较慢时生成的信息框高度比图片总高度小，导致图片部分被隐藏
+        };
+    });
+    marker[3].addEventListener('click', function () {
+        var elem = document.getElementById("animate");
+        var pos = 0;
+        var pEnd = 81;
+        var id = setInterval(frame, 50);
+        function frame() {
+            if (point[3].lng==118.789756+Math.sin(0.3*pEnd)*0.001 & point[3].lat==32.063179+pEnd*0.0005){return;
+            } else {
+            if (pos == pEnd) {
+                //point[0].point[0].lng=point[0].lng+Math.sin(pos);
+                //point[0].lat=point[0].lat-pos;
+                clearInterval(id);
+            } else {
+                pos++;
+                point[3].lng=118.789756+Math.sin(0.3*pos)*0.001;
+                point[3].lat=32.063179+pos*0.0005;
+                marker[3].setPosition(point[3])
+            }}
+        }
+        vueapp.modal3 = true;
+        // this.openInfoWindow(infoWindow);
+        // 图片加载完毕重绘infoWindow
+        document.getElementById('imgDemo').onload = function () {
+            infoWindow.redraw(); // 防止在网速较慢时生成的信息框高度比图片总高度小，导致图片部分被隐藏
+        };
+    });
+    marker[4].addEventListener('click', function () {
+        var elem = document.getElementById("animate");
+        var pos = 0;
+        var pEnd = 80;
+        var id = setInterval(frame, 50);
+        function frame() {
+            if (point[4].lng==118.787487+Math.sin(0.3*pEnd)*0.001 & point[4].lat==32.063273+pEnd*0.0005){return;
+            } else {
+            if (pos == pEnd) {
+                //point[0].point[0].lng=point[0].lng+Math.sin(pos);
+                //point[0].lat=point[0].lat-pos;
+                clearInterval(id);
+            } else {
+                pos++;
+                point[4].lng=118.787487+Math.sin(0.3*pos)*0.001;
+                point[4].lat=32.063273+pos*0.0005;
+                marker[4].setPosition(point[4])
+            }}
+        }
+        vueapp.modal4 = true;
+        // this.openInfoWindow(infoWindow);
+        // 图片加载完毕重绘infoWindow
+        document.getElementById('imgDemo').onload = function () {
+            infoWindow.redraw(); // 防止在网速较慢时生成的信息框高度比图片总高度小，导致图片部分被隐藏
+        };
+    });
+    marker[5].addEventListener('click', function () {
+        vueapp.modal5 = true;
+        var elem = document.getElementById("animate");
+        var pos = 0;
+        var pEnd = 80;
+        var id = setInterval(frame, 50);
+        function frame() {
+            if (point[5].lng==118.775830+Math.sin(0.3*pEnd)*0.001 & point[5].lat==32.059739+pEnd*0.0005){return;
+            } else {
+            if (pos == pEnd) {
+                //point[0].point[0].lng=point[0].lng+Math.sin(pos);
+                //point[0].lat=point[0].lat-pos;
+                clearInterval(id);
+            } else {
+                pos++;
+                point[5].lng=118.775830+Math.sin(0.3*pos)*0.001;
+                point[5].lat=32.059739+pos*0.0005;
+                marker[5].setPosition(point[5])
+            }}
+        }
+        // this.openInfoWindow(infoWindow);
+        // 图片加载完毕重绘infoWindow
+        document.getElementById('imgDemo').onload = function () {
+            infoWindow.redraw(); // 防止在网速较慢时生成的信息框高度比图片总高度小，导致图片部分被隐藏
+        };
+    });
+    marker[6].addEventListener('click', function () {
+        var elem = document.getElementById("animate");
+        var pos = 0;
+        var pEnd = 80;
+        var id = setInterval(frame, 50);
+        function frame() {
+            if (point[6].lng==118.784569+Math.sin(0.3*pEnd)*0.001 & point[6].lat==32.049938+pEnd*0.0005){return;
+            } else {
+            if (pos == pEnd) {
+                //point[0].point[0].lng=point[0].lng+Math.sin(pos);
+                //point[0].lat=point[0].lat-pos;
+                clearInterval(id);
+            } else {
+                pos++;
+                point[6].lng=118.784569+Math.sin(0.3*pos)*0.001;
+                point[6].lat=32.049938+pos*0.0005;
+                marker[6].setPosition(point[6])
+            }}
+        }
+        vueapp.modal6 = true;
+        // this.openInfoWindow(infoWindow);
+        // 图片加载完毕重绘infoWindow
+        document.getElementById('imgDemo').onload = function () {
+            infoWindow.redraw(); // 防止在网速较慢时生成的信息框高度比图片总高度小，导致图片部分被隐藏
+        };
+    });
+    marker[7].addEventListener('click', function () {
+        var elem = document.getElementById("animate");
+        var pos = 0;
+        var pEnd = 80;
+        var id = setInterval(frame, 50);
+        function frame() {
+            if (point[7].lng==118.782470+Math.sin(0.3*pEnd)*0.001 & point[7].lat==32.071342+pEnd*0.0005){return;
+            } else {
+            if (pos == pEnd) {
+                //point[0].point[0].lng=point[0].lng+Math.sin(pos);
+                //point[0].lat=point[0].lat-pos;
+                clearInterval(id);
+            } else {
+                pos++;
+                point[7].lng=118.782470+Math.sin(0.3*pos)*0.001;
+                point[7].lat=32.071342+pos*0.0005;
+                marker[7].setPosition(point[7])
+            }}
+        }
+        vueapp.modal7 = true;
+        // this.openInfoWindow(infoWindow);
+        // 图片加载完毕重绘infoWindow
+        document.getElementById('imgDemo').onload = function () {
+            infoWindow.redraw(); // 防止在网速较慢时生成的信息框高度比图片总高度小，导致图片部分被隐藏
+        };
+    });
+    marker[8].addEventListener('click', function () {
+        var elem = document.getElementById("animate");
+        var pos = 0;
+        var pEnd = 60;
+        var id = setInterval(frame, 50);
+        function frame() {
+            if (point[8].lng==118.764077+Math.sin(0.3*pEnd)*0.001 & point[8].lat==32.086597+pEnd*0.0005){return;
+            } else {
+            if (pos == pEnd) {
+                //point[0].point[0].lng=point[0].lng+Math.sin(pos);
+                //point[0].lat=point[0].lat-pos;
+                clearInterval(id);
+            } else {
+                pos++;
+                point[8].lng=118.764077+Math.sin(0.3*pos)*0.001;
+                point[8].lat=32.086597+pos*0.0005;
+                marker[8].setPosition(point[8])
+            }}
+        }
+        vueapp.modal8 = true;
+        // this.openInfoWindow(infoWindow);
+        // 图片加载完毕重绘infoWindow
+        document.getElementById('imgDemo').onload = function () {
+            infoWindow.redraw(); // 防止在网速较慢时生成的信息框高度比图片总高度小，导致图片部分被隐藏
+        };
+    });
+
+    // 创建叠加物显示的范围Bounds
+    var pStart = new BMapGL.Point(118.756215,32.094196);
+    var pEnd = new BMapGL.Point(118.794231,32.045057);
+    var bounds = new BMapGL.Bounds(new BMapGL.Point(pStart.lng, pStart.lat),
+        new BMapGL.Point(pEnd.lng, pEnd.lat));
+    // 创建地面叠加层实例
+    var imgOverlay = new BMapGL.GroundOverlay(bounds, {
+        type: 'image',
+        url: 'images/老地图加字透明.png',
+        opacity: 1
+    });
+    // 叠加层添加到地图
+    map.addOverlay(imgOverlay);
+</script>
+
+
+
+<script>
+    let vueapp = new Vue({
+        el: '#app',
+        data: {
+            modal0: false,
+            modal1: false,
+            modal2: false,
+            modal3: false,
+            modal4: false,
+            modal5: false,
+            modal6: false,
+            modal7: false,
+            modal8: false,
+            visible: false
+        },
+        methods: {
+            // show() {
+            //     this.visible = true;
+            // }
+        }
+    })
+</script>
