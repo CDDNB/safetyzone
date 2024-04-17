@@ -1,0 +1,276 @@
+html {
+    height: 100%
+}
+
+body {
+    position: relative;
+    width: 100%;
+    height:100%;
+    margin: auto;
+    padding: 0px;
+}
+
+.container {
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    padding-bottom: 160%;
+    margin:auto;
+    font-family: "微软雅黑";
+}
+
+#username {
+    background: transparent;
+    position: absolute;
+    z-index: 10;
+    text-align: center;
+    width: 28%;
+    left: 35.5%;
+    margin-top: 70%;
+    font-size: 100%;
+    color: #fdebd8;
+    border: none;
+}
+#userbutton {
+    width: 40%;
+    padding-top: 10%;
+    left: 30%;
+    margin-top: 125%;
+    position: absolute;
+    z-index: 10;
+    background: transparent;
+    border: none;
+}
+
+#cover {
+    background: url("img/cover.jpeg") no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+
+.button {
+    z-index: 10;
+    position: absolute;
+    margin: auto;
+    width: 22%;
+    margin-top: 135%;
+    padding-bottom: 15%;
+    border:none;
+    text-align: center;}
+    #button1 {
+        left:20%;
+        background: url("img/button11.png") no-repeat;
+        background-size: 100%;
+        background-position: center;
+    }
+    #button2 {
+        left: 58%;
+        background: url("img/button2.png") no-repeat;
+        background-size: 100%;
+        background-position: center;
+    }
+
+.question {
+    position: absolute;
+    z-index: 9;
+    width: 100%;
+    padding-bottom: 128%;
+    transform: scale(0.8);
+    background: url("img/card_modern.png")no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+
+.choice {
+    position: absolute;
+    margin-left: 2%;
+    width: 100%;
+    font-size: 100%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    color: white;
+    border: none;
+    background: url("img/choice.png")no-repeat;
+    background-size: auto 100%;
+    background-position: center;}
+    #choice1 {
+        margin-top: 55%;
+    }
+    #choice2 {
+        margin-top: 70%;
+    }
+
+.background{
+    width: 100%;
+    position: absolute;
+}
+
+#gif {
+    position: absolute;
+    width: 100%;
+    margin-top: 15%;
+    margin-left: 5%;
+}
+
+.font {
+    text-indent: 8%;
+    color: #906855;
+    word-break: break-all;
+    position: absolute;
+    width: 70%;
+    left: 15%;
+    top: 10%;
+}
+#introduction_word {
+    top:7%;
+}
+.name {
+    color: #906855;
+    position: absolute;
+    text-align: center;
+    letter-spacing: 2px;
+    width: 100%;
+    top:80%;
+}
+#mark {
+    color: #906855;
+    position: absolute;
+    text-align: right;
+    left: -5%;
+    width: 100%;
+    top: 94.5%;
+}
+
+.landmark {
+    z-index: 8;
+    position: absolute;
+    width: 24%;
+    padding-bottom: 24%;
+}
+#l1 {
+    width: 20%;
+    padding-bottom: 20%;
+    left: 11%;
+    top: 4%;
+    background: url("img/1.png")no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+#l2 {
+    width: 21%;
+    padding-bottom: 21%;
+    left: 43%;
+    top: 34%;
+    background: url("img/2.png")no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+#l3 {
+    left: 60%;
+    top: 30%;
+    background: url("img/3.png")no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+#l4 {
+    left: 75%;
+    top: 39%;
+    background: url("img/4.png")no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+#l5 {
+    width: 23%;
+    padding-bottom: 23%;
+    left: 74%;
+    top: 50%;
+    background: url("img/5.png")no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+#l6 {
+    width: 26%;
+    padding-bottom: 26%;
+    left: 51%;
+    top: 47%;
+    background: url("img/6.png")no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+#l7 {
+    left: 33%;
+    top: 55%;
+    background: url("img/7.png")no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+#l8 {
+    left: 73%;
+    top: 60%;
+    background: url("img/8.png")no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+#l9 {
+    width: 30%;
+    padding-bottom: 15%;
+    left: 61%;
+    top: 72%;
+    background: url("img/9.png")no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+
+#introduction {
+    top:3%;
+    background: url("img/card_old.png")no-repeat;
+    background-size: auto 100%;
+    background-position: center;
+    z-index: 9;
+}
+
+#pic {
+    z-index: 10;
+    position: absolute;
+    margin-left: 17%;
+    margin-top: 30%;
+    width: 66%;
+    padding-bottom: 46%;
+    background: url("src/1.jpg")no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+
+#all {
+    width: 100%;
+    left: -100%;
+    position: absolute;
+}
+
+#canvas {
+    z-index: 11;
+}
+
+#save {
+    z-index: 12;
+    position: absolute;
+    width: 50%;
+    left: 25%;
+    margin-top: 100%;
+    text-align: center;
+    text-decoration: underline;
+    border: none;
+    background: transparent;
+}
+
+#music {
+    z-index: 13;
+    position: absolute;
+    width: 7%;
+    left: 91%;
+    margin-top: 2%;
+    padding-top: 7%;
+    background: url("img/unmute.png")no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
